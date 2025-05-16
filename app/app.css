@@ -1,8 +1,57 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+  --font-sans: "Roboto Mono", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --font-family: "Roboto Mono";
+
+  --color-text: #b7e2dd;
+
+  --color-primary: #02b59f;
+  --color-primarydark: #017562;
+  --color-primaryblack: #022422;
+  --color-secundary: #ff9f03;
+  --color-secundarydark: #fd7500;
+  --color-background: #1a1d1d;
+  --color-grey: #596d6b;
+  --color-primarylight: #b7e2dd;
+  --color-secundarylight: #ffd99c;
+
+  --text-light: 16px;
+  --text-light-rem: 1rem;
+
+  --font-weight-light: "light";
+  --font-weight-regular: "regular";
+
+  --text-h1: 68px;
+  --text-h1-rem: 4.25rem;
+
+  --font-weight-medium: "medium";
+
+  --text-regular: 20px;
+  --text-regular-rem: 1.25rem;
+
+  --font-weight-semibold: "semibold";
+
+  --leading-light: 24px;
+  --leading-light-rem: 1.5rem;
+  --leading-h1: 72px;
+  --leading-h1-rem: 4.5rem;
+
+  --font-weight-bold: "bold";
+
+  --text-h3: 26px;
+  --text-h3-rem: 1.625rem;
+  --text-h2: 42px;
+  --text-h2-rem: 2.625rem;
+
+  --leading-regular: 30px;
+  --leading-regular-rem: 1.875rem;
+  --leading-h2: 48px;
+  --leading-h2-rem: 3rem;
+  --leading-h3: 48px;
+  --leading-h3-rem: 3rem;
 }
 
 html,

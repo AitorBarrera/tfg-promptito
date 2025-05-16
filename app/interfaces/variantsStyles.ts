@@ -1,0 +1,17 @@
+export type buttonVariants = 1 | 2 | 3;
+
+export const buttonVariantsRecord: Record<buttonVariants, string> = {
+  1: " text-primary",
+  2: " text-primary",
+  3: " text-primary",
+};
+
+export type iconVariants = "star" | "half_star" | "copy" | "user" | "eye";
+
+export const iconVariantsRecord: Record<iconVariants, string> = {
+  star: " fa-regular fa-star",
+  half_star: " fa-regular fa-star-half-stroke",
+  copy: " fa-regular fa-copy",
+  user: " fa-regular fa-user",
+  eye: " fa-regular fa-eye",
+};
