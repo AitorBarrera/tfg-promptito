@@ -3,15 +3,16 @@ import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Promptito Usuario" },
-    { name: "description", content: "Usuario!" },
+    { title: "Promptito Crear" },
+    { name: "description", content: "Crear!" },
   ];
 }
-export default function Usuario() {
+
+export default function Crear() {
   return (
     <div>
       <LayoutNavbar />
-      <div>usuario</div>
+      <div>crear</div>
     </div>
   );
 }

@@ -5,17 +5,20 @@ import { Icon } from "../General/Icon";
 export const PromptComponente = () => {
   return (
     <>
-      <img src="1747392244491.png" className="w-[10%] mx-auto" />
-      <div className="promptComponente w-[55%] ms-auto me-16 grid grid-cols-8 gap-2 bg-background border-2 border-[#017562] text-[#B7E2DD] p-[2rem] items-center">
+      <div className="promptComponente grid grid-cols-8 gap-2 bg-background border-2 border-[#017562] text-[#B7E2DD] p-[2rem] items-center my-12">
         <h3 className="col-span-4 text-6xl text-primary">Titulo</h3>
 
         <div className="vistasContainer text-center flex">
-          <Icon iconName="eye" margin_right={5} />
+          <b className="text-primary">
+            <Icon iconName="eye" margin_right={5} />
+          </b>
           <span>9321</span>
         </div>
 
         <div className="text-center">
-          <Icon iconName="star" margin_right={5} />
+          <b className="text-primary">
+            <Icon iconName="star" margin_right={5} />
+          </b>
           <span>12</span>
         </div>
 
@@ -39,19 +42,35 @@ export const PromptComponente = () => {
           </p>
         </div>
 
-        <p className="promptTexto col-span-8 text-justify mx-auto text-light my-4">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt
-          quos quo aspernatur neque vitae excepturi, recusandae optio
-          perspiciatis culpa earum at praesentium molestias ad deleniti ducimus.
-          Dolore repellat repellendus quisquam.Lorem ipsum, dolor sit amet
-          consectetur adipisicing elit. Nesciunt quos quo aspernatur neque vitae
-          excepturi, recusandae optio perspiciatis culpa earum at praesentium
-          molestias ad deleniti ducimus. Dolore repellat repellendus
-          quisquam.Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Nesciunt quos quo aspernatur neque vitae excepturi, recusandae optio
-          perspiciatis culpa earum at praesentium molestias ad deleniti ducimus.
-          Dolore repellat repellendus quisquam. Lorem ipsum, dolor sit amet
-        </p>
+        <div className="promptTexto relative col-span-8 text-justify mx-auto text-light my-4 overflow-hidden">
+          {/* <div className="promptTextoSombra bg-linear-to-b from-transparent from-80% to-black z-10 absolute h-[100%] w-[100%] ">
+  </div> */}
+          <p className="relative">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt
+            quos quo aspernatur neque vitae excepturi, recusandae optio
+            perspiciatis culpa earum at praesentium molestias ad deleniti
+            ducimus. Dolore repellat repellendus quisquam.Lorem ipsum, dolor sit
+            amet consectetur adipisicing elit. Nesciunt quos quo aspernatur
+            neque vitae excepturi, recusandae optio perspiciatis culpa earum at
+            praesentium molestias ad deleniti ducimus. Dolore repellat
+            repellendus quisquam.Lorem ipsum, dolor sit amet consectetur
+            adipisicing elit. Nesciunt quos quo aspernatur neque vitae
+            excepturi, recusandae optio perspiciatis culpa earum at praesentium
+            molestias ad deleniti ducimus. Dolore repellat repellendus quisquam.
+            Lorem ipsum, dolor sit amet Lorem ipsum, dolor sit amet consectetur
+            adipisicing elit. Nesciunt quos quo aspernatur neque vitae
+            excepturi, recusandae optio perspiciatis culpa earum at praesentium
+            molestias ad deleniti ducimus. Dolore repellat repellendus
+            quisquam.Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Nesciunt quos quo aspernatur neque vitae excepturi, recusandae optio
+            perspiciatis culpa earum at praesentium molestias ad deleniti
+            ducimus. Dolore repellat repellendus quisquam.Lorem ipsum, dolor sit
+            amet consectetur adipisicing elit. Nesciunt quos quo aspernatur
+            neque vitae excepturi, recusandae optio perspiciatis culpa earum at
+            praesentium molestias ad deleniti ducimus. Dolore repellat
+            repellendus quisquam. Lorem ipsum, dolor sit amet
+          </p>
+        </div>
 
         <div className="favoriteButtonContainer col-span-3">
           <GenericButton

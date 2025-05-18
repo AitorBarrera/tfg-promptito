@@ -22,8 +22,16 @@ export const links: Route.LinksFunction = () => [
     href: "https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap",
   },
   {
+    rel: "icon",
+    href: "favicon.ico",
+  },
+  {
     rel: "stylesheet",
     href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.cdnfonts.com/css/tron",
   },
 ];
 

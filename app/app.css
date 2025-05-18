@@ -4,19 +4,32 @@
   --font-sans: "Roboto Mono", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-  --font-family: "Roboto Mono";
+  --font-RobotoMono: "Roboto Mono";
+
+  --font-Tron: "Tron";
 
   --color-text: #b7e2dd;
 
+  --color-primarylight: #b7e2dd;
   --color-primary: #02b59f;
   --color-primarydark: #017562;
   --color-primaryblack: #022422;
+  --color-secundarylight: #ffd99c;
   --color-secundary: #ff9f03;
   --color-secundarydark: #fd7500;
   --color-background: #1a1d1d;
   --color-grey: #596d6b;
-  --color-primarylight: #b7e2dd;
-  --color-secundarylight: #ffd99c;
+  --color-promptShadow: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  --color-backgroundGradiant: linear-gradient(
+    135deg,
+    rgba(2, 181, 159, 1) 0%,
+    rgba(2, 111, 98, 1) 16%,
+    rgba(2, 36, 34, 1) 100%
+  );
 
   --text-light: 16px;
   --text-light-rem: 1rem;
@@ -52,6 +65,8 @@
   --leading-h2-rem: 3rem;
   --leading-h3: 48px;
   --leading-h3-rem: 3rem;
+
+  --container-standard: 90%;
 }
 
 html,

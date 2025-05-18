@@ -6,7 +6,7 @@ export const buttonVariantsRecord: Record<buttonVariants, string> = {
   3: " text-primary",
 };
 
-export type iconVariants = "star" | "half_star" | "copy" | "user" | "eye";
+export type iconVariants = "star" | "half_star" | "copy" | "user" | "eye" | "house" | "search" | "pencil" | "info";
 
 export const iconVariantsRecord: Record<iconVariants, string> = {
   star: " fa-regular fa-star",
@@ -14,4 +14,8 @@ export const iconVariantsRecord: Record<iconVariants, string> = {
   copy: " fa-regular fa-copy",
   user: " fa-regular fa-user",
   eye: " fa-regular fa-eye",
+  house: "fa-solid fa-house",
+  search: "fa-solid fa-magnifying-glass",
+  pencil: "fa-solid fa-pen-to-square",
+  info: "fa-solid fa-circle-info"
 };
