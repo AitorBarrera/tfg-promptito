@@ -3,6 +3,7 @@ import type { Route } from "./+types/home";
 import { Logo } from "~/componentes/General/Logo";
 import { GenericButton } from "~/componentes/General/GenericButton";
 import { Link } from "react-router-dom";
+import { getAllPrompts } from "~/services/Promptito_API";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -13,17 +14,17 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <body className="bg-[image:var(--color-backgroundGradiant)] h-[100vh] flex flex-col">
+    <main className="flex h-[100dvh] flex-col bg-[image:var(--color-backgroundGradiant)]">
       {/* <LayoutNavbar /> */}
-      <div className="flex justify-between items-center flex-grow max-w-standard mx-auto">
+      <div className="max-w-standard mx-auto flex flex-grow items-center justify-between">
         <div className="w-[35%]">
           <Logo />
         </div>
-        <div className="text-center bg-primaryblack p-16 rounded-3xl">
-          <h1 className="text-h1 font-weight-bold mb-2 text-text font-Tron">
+        <div className="bg-primaryblack rounded-3xl p-16 text-center">
+          <h1 className="text-h1 font-weight-bold text-text font-Tron mb-2">
             PROMPTITO
           </h1>
-          <h2 className="text-h2 font-weight-bold mb-2 text-primarylight">
+          <h2 className="text-h2 font-weight-bold text-primarylight mb-2">
             Papua nueva guinea
           </h2>
           <p className="text-text mb-12">
@@ -58,6 +59,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </body>
+    </main>
   );
 }

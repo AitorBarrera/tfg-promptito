@@ -11,10 +11,11 @@ export const GenericButton = ({
   return (
     <>
       <button
-        className={`border-2 rounded-[20px] py-2 px-6 cursor-pointer hover:bg-red-500 transition ${buttonVariantsRecord[buttonVariant]}`}
+        className={`cursor-pointer rounded-[20px] border-2 px-6 py-2 transition ${buttonVariantsRecord[buttonVariant]}`}
+        onClick={onClickHandler}
       >
         {iconName && <Icon iconName={iconName} margin_right={10} />}
-        <span className="text-text">{text}</span>
+        <span className="">{text}</span>
       </button>
     </>
   );

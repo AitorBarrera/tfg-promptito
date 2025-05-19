@@ -1,75 +1,50 @@
 import React from "react";
 import { GenericButton } from "../General/GenericButton";
 import { Icon } from "../General/Icon";
+import type { PromptComponenteProps } from "~/interfaces";
+import { addFavourite } from "~/services/Promptito_API";
 
-export const PromptComponente = () => {
+export const PromptComponente = ({ prompt }: PromptComponenteProps) => {
   return (
     <>
-      <div className="promptComponente grid grid-cols-8 gap-2 bg-background border-2 border-[#017562] text-[#B7E2DD] p-[2rem] items-center my-12">
-        <h3 className="col-span-4 text-6xl text-primary">Titulo</h3>
+      <div className="promptComponente bg-background border-primarydark text-text my-12 grid grid-cols-8 items-center gap-2 border-2 p-[2rem]">
+        <h3 className="text-primary col-span-5 text-4xl uppercase">
+          {prompt.titulo}
+        </h3>
 
-        <div className="vistasContainer text-center flex">
-          <b className="text-primary">
-            <Icon iconName="eye" margin_right={5} />
-          </b>
-          <span>9321</span>
-        </div>
-
-        <div className="text-center">
+        <div className="text-end">
           <b className="text-primary">
             <Icon iconName="star" margin_right={5} />
           </b>
-          <span>12</span>
+          <span>{prompt.enFavoritosDe.length}</span>
         </div>
 
         <div className="creadoContainer col-span-2 text-end">
           <p>
             <b className="text-primary">Creado en: </b>
-            <span>12/03/2025</span>
+            <span>{prompt.fechaCreacion}</span>
           </p>
         </div>
 
         <div className="temasContainer col-span-5">
           <p className="">
             <b className="text-primary">Tematicas: </b>
-            <span>Conversacional, Informativo</span>
+            <span>
+              {prompt.tematicas.map((tematica) => tematica.nombre).join(", ")}
+            </span>
           </p>
         </div>
 
         <div className="autorContainer col-span-3 text-end">
           <p className="">
-            <b className="text-primary">Autor: </b> <span>Pepito</span>
+            <b className="text-primary">Autor: </b>
+            <span>{prompt.usuarioCreador.nombre}</span>
           </p>
         </div>
 
-        <div className="promptTexto relative col-span-8 text-justify mx-auto text-light my-4 overflow-hidden">
-          {/* <div className="promptTextoSombra bg-linear-to-b from-transparent from-80% to-black z-10 absolute h-[100%] w-[100%] ">
-  </div> */}
-          <p className="relative">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt
-            quos quo aspernatur neque vitae excepturi, recusandae optio
-            perspiciatis culpa earum at praesentium molestias ad deleniti
-            ducimus. Dolore repellat repellendus quisquam.Lorem ipsum, dolor sit
-            amet consectetur adipisicing elit. Nesciunt quos quo aspernatur
-            neque vitae excepturi, recusandae optio perspiciatis culpa earum at
-            praesentium molestias ad deleniti ducimus. Dolore repellat
-            repellendus quisquam.Lorem ipsum, dolor sit amet consectetur
-            adipisicing elit. Nesciunt quos quo aspernatur neque vitae
-            excepturi, recusandae optio perspiciatis culpa earum at praesentium
-            molestias ad deleniti ducimus. Dolore repellat repellendus quisquam.
-            Lorem ipsum, dolor sit amet Lorem ipsum, dolor sit amet consectetur
-            adipisicing elit. Nesciunt quos quo aspernatur neque vitae
-            excepturi, recusandae optio perspiciatis culpa earum at praesentium
-            molestias ad deleniti ducimus. Dolore repellat repellendus
-            quisquam.Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Nesciunt quos quo aspernatur neque vitae excepturi, recusandae optio
-            perspiciatis culpa earum at praesentium molestias ad deleniti
-            ducimus. Dolore repellat repellendus quisquam.Lorem ipsum, dolor sit
-            amet consectetur adipisicing elit. Nesciunt quos quo aspernatur
-            neque vitae excepturi, recusandae optio perspiciatis culpa earum at
-            praesentium molestias ad deleniti ducimus. Dolore repellat
-            repellendus quisquam. Lorem ipsum, dolor sit amet
-          </p>
+        <div className="promptTexto text-light relative col-span-8 mx-auto my-4 overflow-hidden text-justify">
+          {/* <div className="promptTextoSombra bg-linear-to-b from-transparent from-80% to-black z-10 absolute h-[100%] w-[100%] "> </div> */}
+          <p className="relative">{prompt.promptVariantes[0].textoPrompt}</p>
         </div>
 
         <div className="favoriteButtonContainer col-span-3">
@@ -78,6 +53,9 @@ export const PromptComponente = () => {
             text={"Añadir a favoritos"}
             buttonVariant={1}
             iconName="half_star"
+            onClickHandler={() => {
+              addFavourite(2, prompt.id);
+            }}
           />
         </div>
 
@@ -85,8 +63,13 @@ export const PromptComponente = () => {
           <GenericButton
             key={2}
             text={"Copiar prompt"}
-            buttonVariant={2}
+            buttonVariant={1}
             iconName="copy"
+            onClickHandler={() => {
+              navigator.clipboard.writeText(
+                prompt.promptVariantes[0].textoPrompt,
+              );
+            }}
           />
         </div>
       </div>

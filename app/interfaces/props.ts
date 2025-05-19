@@ -1,3 +1,4 @@
+import type { Prompt } from "./objects";
 import type { buttonVariants, iconVariants } from "./variantsStyles";
 
 export interface GenericButtonProps {
@@ -11,3 +12,8 @@ export interface IconProps {
   iconName: iconVariants;
   margin_right?: number;
 }
+
+export interface PromptComponenteProps {
+  prompt: Prompt;
+}
+

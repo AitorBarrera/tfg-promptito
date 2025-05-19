@@ -9,9 +9,9 @@ export function meta({}: Route.MetaArgs) {
 }
 export default function Informacion() {
   return (
-    <div>
+    <main className="min-h-[100dvh]">
       <LayoutNavbar />
       <div>informacion</div>
-    </div>
+    </main>
   );
 }

@@ -4,7 +4,7 @@ import { Icon } from "~/componentes/General/Icon";
 export const LayoutNavbar = () => {
   return (
     <div className="">
-      <div className="flex justify-end gap-24 items-center text-text relative border-bottom-2 max-w-standard mx-auto py-4">
+      <div className="text-text border-bottom-2 max-w-standard relative mx-auto flex items-center justify-end gap-24 py-4">
         <NavLink
           to="/"
           className={({ isActive }) =>

@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 
-const localCache = {};
+type ErrorType = {
+  code: number;
+  message: string;
+} | null;
 
-export const useFetch = (url) => {
+export const useFetch = (url: string) => {
   const [state, setState] = useState({
-    data: null,
-    isLoading: true,
-    hasError: false,
-    error: null,
+    data: null as any,
+    isLoading: true as boolean,
+    hasError: false as boolean,
+    error: null as ErrorType,
   });
 
   const setLoadingState = () => {
@@ -15,18 +18,6 @@ export const useFetch = (url) => {
   };
 
   const getFetch = async () => {
-    if (localCache[url]) {
-      console.log("Usando cache");
-
-      setState({
-        data: localCache[url],
-        isLoading: false,
-        hasError: false,
-        error: null,
-      });
-
-      return;
-    }
 
     setLoadingState();
 
@@ -53,7 +44,6 @@ export const useFetch = (url) => {
       error: null,
     });
 
-    localCache[url] = data;
   };
 
   useEffect(() => {
@@ -61,7 +51,7 @@ export const useFetch = (url) => {
   }, [url]);
 
   return {
-    data: state.data,
+    data: state.data ,
     isLoading: state.isLoading,
     hasError: state.hasError,
   };

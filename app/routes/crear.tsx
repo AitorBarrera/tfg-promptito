@@ -10,9 +10,9 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Crear() {
   return (
-    <div>
+    <main className="min-h-[100dvh]">
       <LayoutNavbar />
       <div>crear</div>
-    </div>
+    </main>
   );
 }
