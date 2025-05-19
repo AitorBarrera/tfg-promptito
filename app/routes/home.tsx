@@ -31,20 +31,20 @@ export default function Home() {
             quos.
           </p>
           <div className="flex justify-between gap-4">
-            <Link to="/explorar">
-              <GenericButton
-                text="Explorar Prompts"
-                onClickHandler={() => {}}
-                buttonVariant={1}
-                iconName="search"
-              />
-            </Link>
             <Link to="/usuario">
               <GenericButton
                 text="Iniciar Sesion"
                 onClickHandler={() => {}}
                 buttonVariant={1}
                 iconName="user"
+              />
+            </Link>
+            <Link to="/explorar">
+              <GenericButton
+                text="Explorar Prompts"
+                onClickHandler={() => {}}
+                buttonVariant={1}
+                iconName="search"
               />
             </Link>
             <Link to="/crear">

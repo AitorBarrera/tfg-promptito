@@ -11,10 +11,12 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Explorar() {
   return (
-    <div className="h-[100vh] max-h-[100vh] overflow-hidden flex">
-      <div className="w-[25%] bg-primarydark"></div>
+    <div className="overflow-hidden flex">
+      <div className="w-[25%] bg-primarydark">
+        <p></p>
+      </div>
       <div className="w-[75%] flex flex-col">
-        <div className="flex flex-col gap-4 overflow-scroll">
+        <div className="flex flex-col gap-4">
           <LayoutNavbar />
           <div className="flex flex-col gap-4 max-w-standard mx-auto">
             <PromptComponente />
