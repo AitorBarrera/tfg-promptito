@@ -22,10 +22,15 @@ export default function Explorar() {
     data == null ? {} : data;
 
   return (
-    <main className="flex min-h-[100dvh] overflow-hidden">
-      <div className="bg-primaryblack w-[25%] px-12 sticky top-0 bottom-0 max-h-[100dvh]">
-        <h3 className="text-primarywhite text-2xl font-bold text-center my-4" >PROMPTITO</h3>
+    <main className="flex min-h-[100dvh]">
+      <div className="bg-primaryblack sticky top-0 bottom-0 max-h-[100dvh] w-[25%] overflow-scroll overflow-x-hidden px-12">
+        <h3 className="text-primarywhite my-4 text-center text-2xl font-bold">
+          PROMPTITO
+        </h3>
         <FilterForm />
+        <button className="bg-primary absolute top-0 right-[-300px] z-50 p-12">
+          Collapse
+        </button>
       </div>
       <div className="flex w-[75%] flex-col">
         <div className="flex flex-col gap-4">
