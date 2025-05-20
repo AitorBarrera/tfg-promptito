@@ -1,3 +1,5 @@
+import { whiteAlpha } from "@clerk/themes/dist/clerk-js/src/ui/foundations";
+import { Checkbox, FormControlLabel } from "@mui/material";
 import { useFetch } from "~/hooks";
 import type { LLM } from "~/interfaces";
 
@@ -16,21 +18,31 @@ export const FilterFormLlms = () => {
             <div className="llmsFilter">
               {llms.map((llm: LLM) => {
                 return (
-                  <label 
-                  htmlFor={`${llm.nombre} ${llm.version}`}
-                  key={llm.id} 
-                  className="flex items-center justify-between text-start border-b-2 pb-1 border-text">
-                    
-                    {`${llm.nombre} ${llm.version}`}
-                    
-                    <input
-                      type="checkbox"
-                      name="llm"
-                      className="form-checkbox place-self-start self-center justify-self-start h-[18px] w-[18px] rounded"
-                      id={`${llm.nombre} ${llm.version}`}
-                      value={`${llm.nombre} ${llm.version}`}
-                    />
-                  </label>
+                  <FormControlLabel
+                    key={llm.id}
+                    control={
+                      <Checkbox
+                        name={`${llm.nombre} ${llm.version}`}
+                        sx={{ color: "white" }}
+                      />
+                    }
+                    label={`${llm.nombre} ${llm.version}`}
+                  />
+                  // <label
+                  // htmlFor={`${llm.nombre} ${llm.version}`}
+                  // key={llm.id}
+                  // className="flex items-center justify-between text-start border-b-2 pb-1 border-text">
+
+                  //   {`${llm.nombre} ${llm.version}`}
+
+                  //   <input
+                  //     type="checkbox"
+                  //     name="llm"
+                  //     className="form-checkbox place-self-start self-center justify-self-start h-[18px] w-[18px] rounded"
+                  //     id={`${llm.nombre} ${llm.version}`}
+                  //     value={`${llm.nombre} ${llm.version}`}
+                  //   />
+                  // </label>
                 );
               })}
             </div>

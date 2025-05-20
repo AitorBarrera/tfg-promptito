@@ -7,14 +7,15 @@ export const LayoutNavbar = () => {
 
   return (
     <div className="">
-      <div className="text-text border-bottom-2 max-w-standard relative mx-auto flex items-center justify-end gap-24 py-4">
+      <div className="text-text border-bottom-2 bg-navbar relative mx-auto flex items-center justify-end gap-24 px-[6%] py-4">
         <NavLink
           to="/"
           className={({ isActive }) =>
             isActive ? "text-primary border-primary border-b-2 pb-2" : ""
           }
         >
-          <Icon iconName={"house"} margin_right={20} />Inicio
+          <Icon iconName={"house"} margin_right={20} />
+          Inicio
         </NavLink>
 
         <NavLink
@@ -23,7 +24,8 @@ export const LayoutNavbar = () => {
             isActive ? "text-primary border-primary border-b-2 pb-2" : ""
           }
         >
-          <Icon iconName={"search"} margin_right={20} />Explorar
+          <Icon iconName={"search"} margin_right={20} />
+          Explorar
         </NavLink>
 
         <NavLink
@@ -32,7 +34,8 @@ export const LayoutNavbar = () => {
             isActive ? "text-primary border-primary border-b-2 pb-2" : ""
           }
         >
-          <Icon iconName={"pencil"} margin_right={20} />Crear
+          <Icon iconName={"pencil"} margin_right={20} />
+          Crear
         </NavLink>
 
         <NavLink
@@ -41,33 +44,34 @@ export const LayoutNavbar = () => {
             isActive ? "text-primary border-primary border-b-2 pb-2" : ""
           }
         >
-          <Icon iconName={"info"} margin_right={20} />Saber mas
+          <Icon iconName={"info"} margin_right={20} />
+          Saber mas
         </NavLink>
 
-          <NavLink
-            to="/usuario"
-            className={({ isActive }) =>
-              isActive ? "text-primary border-primary border-b-2 pb-2" : ""
-            }
-          >
-            <SignedOut>
-              <Icon iconName={"user"} margin_right={20} /> 
-              Usuario
-            </SignedOut>
-            <SignedIn>
-              <div className="flex align-items gap-4">
-             <UserButton
+        <NavLink
+          to="/usuario"
+          className={({ isActive }) =>
+            isActive ? "text-primary border-primary border-b-2 pb-2" : ""
+          }
+        >
+          <SignedOut>
+            <Icon iconName={"user"} margin_right={20} />
+            Usuario
+          </SignedOut>
+          <SignedIn>
+            <div className="align-items flex gap-4">
+              <UserButton
                 appearance={{
                   elements: {
-                    userButtonBox: 'text-text !flex-row-reverse',
-                    userButtonOuterIdentifier: '!text-[16px]'
-                  }
+                    userButtonBox: "text-text !flex-row-reverse",
+                    userButtonOuterIdentifier: "!text-[16px]",
+                  },
                 }}
               />
               {user?.username}
-              </div>
-            </SignedIn>
-          </NavLink>
+            </div>
+          </SignedIn>
+        </NavLink>
       </div>
       <Outlet />
     </div>

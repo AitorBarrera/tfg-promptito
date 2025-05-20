@@ -16,18 +16,19 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main className="flex h-[100dvh] flex-col  max-w-standard mx-auto relative">
-      <div className="absolute top-0 right-0 py-8 text-text">
-        <UserButton showName={true} 
+    <main className="max-w-landingPage mx-auto flex h-[100dvh] flex-col">
+      <div className="text-text absolute top-0 right-10 py-8">
+        <UserButton
+          showName={true}
           appearance={{
             elements: {
-              userButtonBox: 'text-text ',
-              userButtonOuterIdentifier: '!text-[16px]'
-            }
+              userButtonBox: "text-text ",
+              userButtonOuterIdentifier: "!text-[16px]",
+            },
           }}
         />
       </div>
-      <div className="flex flex-col xl:flex-row flex-grow items-center justify-between">
+      <div className="flex flex-grow flex-col items-center justify-between xl:flex-row">
         <div className="w-[35%]">
           <Logo />
         </div>
@@ -49,7 +50,7 @@ export default function Home() {
                   text="Iniciar Sesion"
                   buttonVariant={1}
                   iconName="user"
-                  />
+                />
               </SignInButton>
             </SignedOut>
             <Link to="/explorar">

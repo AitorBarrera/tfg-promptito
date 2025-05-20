@@ -20,6 +20,7 @@
   --color-secundarydark: #fd7500;
   --color-background: #1a1d1d;
   --color-grey: #596d6b;
+  --color-navbar: rgba(7, 74, 63, 0.86);
   --color-promptShadow: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
@@ -32,6 +33,14 @@
     rgba(2, 36, 34, 1) 100%
   );
 
+  --color-backgroundGradiant2: linear-gradient(
+    335deg,
+    rgba(1, 117, 98, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(237, 221, 83, 1) 100%
+  );
+
+  --color-primarydark: #b7e2dd;
 
   --font-weight-light: "light";
   --font-weight-regular: "regular";
@@ -39,19 +48,20 @@
   --font-weight-semibold: "semibold";
   --font-weight-bold: "bold";
 
-  --text-h3-rem: 1.625rem;
-  --text-h2-rem: 2.625rem;
-  --text-h1-rem: 4.25rem;
-  --text-regular-rem: 1.25rem;
-  --text-light-rem: 0.9rem;
+  --text-h3: 1.625rem;
+  --text-h2: 2.625rem;
+  --text-h1: 4.25rem;
+  --text-regular: 1.25rem;
+  --text-light: 0.9rem;
 
-  --leading-light-rem: 1.5rem;
-  --leading-h1-rem: 4.5rem;
-  --leading-regular-rem: 1.875rem;
-  --leading-h2-rem: 3rem;
-  --leading-h3-rem: 3rem;
+  --leading-light: 1.5rem;
+  --leading-h1: 4.5rem;
+  --leading-regular: 1.875rem;
+  --leading-h2: 3rem;
+  --leading-h3: 3rem;
 
   --container-standard: 90%;
+  --container-landingPage: 80%;
 }
 
 html,
@@ -62,5 +72,5 @@ body {
     color-scheme: dark;
   }
 
-  background-image: var(--color-backgroundGradiant);
+  background-image: var(--color-backgroundGradiant2);
 }

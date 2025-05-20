@@ -8,10 +8,12 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
-import "./app.css";
+import "./styles/app.css";
 import { ClerkProvider } from "@clerk/clerk-react";
 import { esES } from "@clerk/localizations";
 import { dark } from "@clerk/themes";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { colorThemeMaterial } from "./styles/colorThemeMaterial";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -23,6 +25,10 @@ export const links: Route.LinksFunction = () => [
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap",
   },
   {
     rel: "icon",
@@ -64,11 +70,16 @@ if (!PUBLISHABLE_KEY) {
 
 export default function App() {
   return (
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} localization={esES} 
+    <ClerkProvider
+      publishableKey={PUBLISHABLE_KEY}
+      localization={esES}
       appearance={{
         baseTheme: dark,
-      }}>
-      <Outlet />
+      }}
+    >
+      <ThemeProvider theme={colorThemeMaterial}>
+        <Outlet />
+      </ThemeProvider>
     </ClerkProvider>
   );
 }

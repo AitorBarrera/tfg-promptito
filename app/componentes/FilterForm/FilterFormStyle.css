@@ -8,15 +8,14 @@
 .form-group label {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-primary)
+  color: var(--color-primary);
 }
 
 .form-group input,
 .form-group textarea,
-.form-group input[type="checkbox"],
 .form-group select {
-  color: var(--color-primarydark);
-  background-color: var(--color-text);
+  color: var(--color-primaryblack);
+  background-color: white;
   border: 1px solid var(--text-primary);
   border-radius: 0.5rem;
   padding: 0.5rem;
@@ -26,13 +25,15 @@
   margin-left: 0.5rem;
 }
 
-.llmsFilter, .tematicasFilter {
+.llmsFilter,
+.tematicasFilter {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
+  gap: 2rem;
 }
 
-.llmsFilter label, .tematicasFilter label {
+.llmsFilter label,
+.tematicasFilter label {
   font-size: var(--text-light-rem);
   font-weight: 300;
   color: var(--color-text);
