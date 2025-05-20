@@ -9,6 +9,9 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { ClerkProvider } from "@clerk/clerk-react";
+import { esES } from "@clerk/localizations";
+import { dark } from "@clerk/themes";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -53,8 +56,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key");
+}
+
 export default function App() {
-  return <Outlet />;
+  return (
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY} localization={esES} 
+      appearance={{
+        baseTheme: dark,
+      }}>
+      <Outlet />
+    </ClerkProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

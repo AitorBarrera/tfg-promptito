@@ -3,23 +3,24 @@ import { GenericButton } from "../General/GenericButton";
 import { Icon } from "../General/Icon";
 import type { PromptComponenteProps } from "~/interfaces";
 import { addFavourite } from "~/services/Promptito_API";
+import { SignedOut } from "@clerk/clerk-react";
 
 export const PromptComponente = ({ prompt }: PromptComponenteProps) => {
   return (
     <>
-      <div className="promptComponente bg-background border-primarydark text-text my-12 grid grid-cols-8 items-center gap-2 border-2 p-[2rem]">
-        <h3 className="text-primary col-span-5 text-4xl uppercase">
+      <div className="promptComponente bg-background border-primarydark text-text my-6 grid grid-cols-8 items-center gap-2 border-2 p-[2rem]">
+        <h3 className="text-primary col-span-5 text-4xl uppercase font-black">
           {prompt.titulo}
         </h3>
 
-        <div className="text-end">
-          <b className="text-primary">
-            <Icon iconName="star" margin_right={5} />
-          </b>
-          <span>{prompt.enFavoritosDe.length}</span>
-        </div>
 
-        <div className="creadoContainer col-span-2 text-end">
+        <div className="creadoContainer col-span-3 flex justify-end gap-6">
+          <div className="text-end">
+            <b className="text-primary">
+              <Icon iconName="star" margin_right={5} />
+            </b>
+            <span>{prompt.enFavoritosDe.length}</span>
+          </div>
           <p>
             <b className="text-primary">Creado en: </b>
             <span>{prompt.fechaCreacion}</span>

@@ -8,6 +8,7 @@
 .form-group label {
   font-size: 1rem;
   font-weight: 600;
+  color: var(--color-primary)
 }
 
 .form-group input,
@@ -25,17 +26,19 @@
   margin-left: 0.5rem;
 }
 
-.llmsFilter {
+.llmsFilter, .tematicasFilter {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 3rem;
 }
 
-.llmsFilter label {
+.llmsFilter label, .tematicasFilter label {
+  font-size: var(--text-light-rem);
   font-weight: 300;
+  color: var(--color-text);
 }
 
-input[type="checkbox"] {
+/* input[type="checkbox"] {
   appearance: none;
   width: 1rem;
   height: 1rem;
@@ -46,4 +49,4 @@ input[type="checkbox"]::before {
 }
 input[type="checkbox"]:checked::before {
   transform: scale(1);
-}
+} */

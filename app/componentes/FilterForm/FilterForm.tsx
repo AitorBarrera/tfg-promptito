@@ -3,6 +3,7 @@ import "./FilterFormStyle.css";
 import { useFetch } from "~/hooks";
 import type { LLM } from "~/interfaces";
 import { FilterFormLlms } from "./FilterFormLlms";
+import { FilterFormTematicas } from "./FilterFormTematicas";
 
 export const FilterForm = () => {
   const { data, isLoading } = useFetch("https://localhost:7035/Tematica/dto");
@@ -36,10 +37,7 @@ export const FilterForm = () => {
 
         <FilterFormLlms />
 
-        <div className="form-group">
-          <label htmlFor="tematica">Tematica</label>
-          <input type="checkbox" name="tematica" id="tematica" />
-        </div>
+        <FilterFormTematicas/>
 
         <div className="form-group">
           <label htmlFor="favoritos">Favoritos:</label>

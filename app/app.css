@@ -32,39 +32,23 @@
     rgba(2, 36, 34, 1) 100%
   );
 
-  --text-light: 16px;
-  --text-light-rem: 1rem;
 
   --font-weight-light: "light";
   --font-weight-regular: "regular";
-
-  --text-h1: 68px;
-  --text-h1-rem: 4.25rem;
-
   --font-weight-medium: "medium";
-
-  --text-regular: 20px;
-  --text-regular-rem: 1.25rem;
-
   --font-weight-semibold: "semibold";
-
-  --leading-light: 24px;
-  --leading-light-rem: 1.5rem;
-  --leading-h1: 72px;
-  --leading-h1-rem: 4.5rem;
-
   --font-weight-bold: "bold";
 
-  --text-h3: 26px;
   --text-h3-rem: 1.625rem;
-  --text-h2: 42px;
   --text-h2-rem: 2.625rem;
+  --text-h1-rem: 4.25rem;
+  --text-regular-rem: 1.25rem;
+  --text-light-rem: 0.9rem;
 
-  --leading-regular: 30px;
+  --leading-light-rem: 1.5rem;
+  --leading-h1-rem: 4.5rem;
   --leading-regular-rem: 1.875rem;
-  --leading-h2: 48px;
   --leading-h2-rem: 3rem;
-  --leading-h3: 48px;
   --leading-h3-rem: 3rem;
 
   --container-standard: 90%;

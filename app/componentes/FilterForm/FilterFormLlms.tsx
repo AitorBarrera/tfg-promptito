@@ -5,7 +5,6 @@ export const FilterFormLlms = () => {
   const { data, isLoading } = useFetch("https://localhost:7035/Llm/dto");
 
   const llms = data;
-  console.log(llms);
   return (
     <>
       {isLoading ? (
@@ -17,11 +16,17 @@ export const FilterFormLlms = () => {
             <div className="llmsFilter">
               {llms.map((llm: LLM) => {
                 return (
-                  <label htmlFor="llm" key={llm.id}>
+                  <label 
+                  htmlFor={`${llm.nombre} ${llm.version}`}
+                  key={llm.id} 
+                  className="flex items-center justify-between text-start border-b-2 pb-1 border-text">
+                    
                     {`${llm.nombre} ${llm.version}`}
+                    
                     <input
                       type="checkbox"
                       name="llm"
+                      className="form-checkbox place-self-start self-center justify-self-start h-[18px] w-[18px] rounded"
                       id={`${llm.nombre} ${llm.version}`}
                       value={`${llm.nombre} ${llm.version}`}
                     />

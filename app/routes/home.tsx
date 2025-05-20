@@ -4,6 +4,8 @@ import { Logo } from "~/componentes/General/Logo";
 import { GenericButton } from "~/componentes/General/GenericButton";
 import { Link } from "react-router-dom";
 import { getAllPrompts } from "~/services/Promptito_API";
+import { SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { LoginButton } from "~/componentes/General/LoginButton";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,9 +16,18 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main className="flex h-[100dvh] flex-col bg-[image:var(--color-backgroundGradiant)]">
-      {/* <LayoutNavbar /> */}
-      <div className="max-w-standard mx-auto flex flex-grow items-center justify-between">
+    <main className="flex h-[100dvh] flex-col  max-w-standard mx-auto relative">
+      <div className="absolute top-0 right-0 py-8 text-text">
+        <UserButton showName={true} 
+          appearance={{
+            elements: {
+              userButtonBox: 'text-text ',
+              userButtonOuterIdentifier: '!text-[16px]'
+            }
+          }}
+        />
+      </div>
+      <div className="flex flex-col xl:flex-row flex-grow items-center justify-between">
         <div className="w-[35%]">
           <Logo />
         </div>
@@ -32,14 +43,15 @@ export default function Home() {
             quos.
           </p>
           <div className="flex justify-between gap-4">
-            <Link to="/usuario">
-              <GenericButton
-                text="Iniciar Sesion"
-                onClickHandler={() => {}}
-                buttonVariant={1}
-                iconName="user"
-              />
-            </Link>
+            <SignedOut>
+              <SignInButton>
+                <LoginButton
+                  text="Iniciar Sesion"
+                  buttonVariant={1}
+                  iconName="user"
+                  />
+              </SignInButton>
+            </SignedOut>
             <Link to="/explorar">
               <GenericButton
                 text="Explorar Prompts"

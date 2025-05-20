@@ -21,7 +21,7 @@ export const iconVariantsRecord: Record<iconVariants, string> = {
   star: " fa-regular fa-star",
   half_star: " fa-regular fa-star-half-stroke",
   copy: " fa-regular fa-copy",
-  user: " fa-regular fa-user",
+  user: " fa-solid fa-user",
   eye: " fa-regular fa-eye",
   house: "fa-solid fa-house",
   search: "fa-solid fa-magnifying-glass",
