@@ -23,7 +23,7 @@ export default function Explorar() {
 
   return (
     <main className="flex min-h-[100dvh]">
-      <div className="bg-primaryblack sticky top-0 bottom-0 max-h-[100dvh] w-[25%] overflow-scroll overflow-x-hidden px-12">
+      <div className="bg-primary dark:bg-primaryblack dark:text-text sticky top-0 bottom-0 max-h-[100dvh] w-[25%] overflow-scroll overflow-x-hidden px-12">
         <h3 className="text-primarywhite my-4 text-center text-2xl font-bold">
           PROMPTITO
         </h3>
