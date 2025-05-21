@@ -27,10 +27,12 @@
     rgba(0, 0, 0, 1) 100%
   );
   --color-backgroundGradiant: linear-gradient(
-    135deg,
-    rgba(2, 181, 159, 1) 0%,
-    rgba(2, 111, 98, 1) 16%,
-    rgba(2, 36, 34, 1) 100%
+    181deg,
+    rgba(2, 111, 98, 1) 0%,
+    rgba(6, 158, 140, 1) 25%,
+    rgba(21, 176, 158, 1) 50%,
+    rgba(6, 158, 140, 1) 75%,
+    rgba(2, 111, 98, 1) 100%
   );
 
   --color-backgroundGradiant2: linear-gradient(
@@ -72,7 +74,7 @@ body {
     color-scheme: dark;
   }
 
-  background-image: var(--color-backgroundGradiant2);
+  background-image: var(--color-backgroundGradiant);
 }
 
 .filterContainer {

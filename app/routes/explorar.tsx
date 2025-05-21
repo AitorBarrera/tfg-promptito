@@ -5,8 +5,9 @@ import { LayoutNavbar } from "~/layouts/LayoutNavbar";
 import { useFetch, useFilters } from "~/hooks";
 import type { Prompt, Filters } from "~/interfaces";
 import { FilterForm } from "~/componentes/FilterForm/FilterForm";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import TuneIcon from "@mui/icons-material/Tune";
+import { UserContext } from "~/contexts/UserContext";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -27,6 +28,8 @@ const initialFilters: Filters = {
 };
 
 export default function Explorar() {
+  const usuarioEnBBDD = useContext(UserContext);
+
   const {
     filterState,
     onInputChange,
@@ -50,7 +53,7 @@ export default function Explorar() {
       `&orderBy=${orderBy}` +
       `&idLlm=${idLlm ?? ""}` +
       `&idPromptTematica=${idPromptTematica ?? ""}` +
-      `&idUsarioFavorito=${idUsuarioFavorito ?? ""}` +
+      `&idUsarioFavorito=${usuarioEnBBDD?.id ?? ""}` +
       `&esFavorito=${esFavorito}`,
   );
 

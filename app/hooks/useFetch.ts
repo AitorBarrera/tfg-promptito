@@ -20,6 +20,7 @@ export const useFetch = (url: string) => {
   const getFetch = async () => {
     // setLoadingState();
 
+    console.log("url", url);
     const resp = await fetch(url);
 
     if (!resp.ok) {

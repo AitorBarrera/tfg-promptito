@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GenericButton } from "../General/GenericButton";
 import { Icon } from "../General/Icon";
 import type { PromptComponenteProps } from "~/interfaces";
 import { addFavourite } from "~/services/Promptito_API";
-import { SignedOut } from "@clerk/clerk-react";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { UserContext } from "~/contexts/UserContext";
 
 export const PromptComponente = ({ prompt }: PromptComponenteProps) => {
+  const usuarioEnBBDD = useContext(UserContext);
+
   return (
     <>
-      <div className="promptComponente bg-background border-primarydark text-text my-6 grid grid-cols-8 items-center gap-2 border-2 p-[2rem]">
-        <h3 className="text-primary col-span-5 text-4xl uppercase font-black">
+      <div className="promptComponente bg-background border-primarydark text-text my-6 grid grid-cols-8 items-center gap-2 rounded-2xl border-2 p-[2rem]">
+        <h3 className="text-primary col-span-5 text-4xl font-black uppercase">
           {prompt.titulo}
         </h3>
-
 
         <div className="creadoContainer col-span-3 flex justify-end gap-6">
           <div className="text-end">
@@ -49,15 +51,17 @@ export const PromptComponente = ({ prompt }: PromptComponenteProps) => {
         </div>
 
         <div className="favoriteButtonContainer col-span-3">
-          <GenericButton
-            key={1}
-            text={"Añadir a favoritos"}
-            buttonVariant={1}
-            iconName="half_star"
-            onClickHandler={() => {
-              addFavourite(2, prompt.id);
-            }}
-          />
+          <SignedIn>
+            <GenericButton
+              key={1}
+              text={"Añadir a favoritos"}
+              buttonVariant={1}
+              iconName="half_star"
+              onClickHandler={() => {
+                addFavourite(usuarioEnBBDD?.id ?? 0, prompt.id);
+              }}
+            />
+          </SignedIn>
         </div>
 
         <div className="copyButtonContainer col-span-3 col-start-6 text-end">

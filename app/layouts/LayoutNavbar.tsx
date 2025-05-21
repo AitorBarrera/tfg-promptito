@@ -7,7 +7,7 @@ export const LayoutNavbar = () => {
 
   return (
     <div className="">
-      <div className="text-text border-bottom-2 bg-navbar relative mx-auto flex items-center justify-end gap-24 px-[6%] py-4">
+      <div className="text-text border-bottom-2 bg-navbar relative mx-auto flex items-center justify-evenly gap-24 px-[6%] py-4">
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -51,7 +51,9 @@ export const LayoutNavbar = () => {
         <NavLink
           to="/usuario"
           className={({ isActive }) =>
-            isActive ? "text-primary border-primary border-b-2 pb-2" : ""
+            isActive
+              ? "text-primary border-primary place-self-end border-b-2 pb-2"
+              : "place-self-end"
           }
         >
           <SignedOut>

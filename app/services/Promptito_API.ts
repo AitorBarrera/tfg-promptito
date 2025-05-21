@@ -11,6 +11,8 @@ export const getAllPrompts = async () => {
 };
 
 export const addFavourite = async (userId: number, promptId: number) => {
+  console.log("userId", userId);
+  console.log("promptId", promptId);
   const response = await fetch(
     `${API_URL}Usuario/addFavorite?usuarioId=${userId}&promptId=${promptId}`,
     {
@@ -38,8 +40,13 @@ export const addUser = async (nuevoUsuario: UsuarioPost) => {
 };
 
 //TODO
-// export const getUserByIdClerk = async (userId: number) => {
-//   const response = await fetch(`${API_URL}Usuario/dto/${userId}`);
-//   const data = await response.json();
-//   return data;
-// };
+export const getUserByIdClerk = async (idClerk: string) => {
+  const response = await fetch(
+    `${API_URL}Usuario/dto/getByIdClerk?idClerk=${idClerk}`,
+  );
+  const data = await response.json();
+
+  if (data.title == "An error occurred") return null;
+
+  return data;
+};

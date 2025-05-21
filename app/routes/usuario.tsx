@@ -9,10 +9,9 @@ import {
   useSignUp,
   useUser,
 } from "@clerk/clerk-react";
-import { use, useContext } from "react";
+import { useContext } from "react";
 import type { Usuario, UsuarioPost } from "~/interfaces";
 import { UserContext } from "~/contexts/UserContext";
-import { addUser } from "~/services/Promptito_API";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -22,9 +21,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Usuario() {
-  const { usuarioActual: Usuario } = useContext(UserContext);
-  console.log("Usuario:", usuarioActual);
-
+  const usuarioEnBBDD = useContext(UserContext);
+  console.log("Usuario:", usuarioEnBBDD);
   return (
     <main className="flex min-h-[100dvh] flex-col">
       <LayoutNavbar />
