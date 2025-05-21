@@ -37,6 +37,15 @@ export interface Usuario {
   estaActivo: boolean;
 }
 
+export interface UsuarioPost {
+  nombre: string | null;
+  email: string | null;
+  passwordHash: string | null;
+  avatarUrl: string | null;
+  idClerk: string | null;
+  estaActivo: boolean | null;
+}
+
 export interface LLM {
   id: number;
   nombre: string;

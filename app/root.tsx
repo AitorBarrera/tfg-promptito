@@ -14,6 +14,7 @@ import { esES } from "@clerk/localizations";
 import { dark } from "@clerk/themes";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { colorThemeMaterial } from "./styles/colorThemeMaterial";
+import { UserProvider } from "./contexts/UserProvider";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -77,9 +78,11 @@ export default function App() {
         baseTheme: dark,
       }}
     >
-      <ThemeProvider theme={colorThemeMaterial}>
-        <Outlet />
-      </ThemeProvider>
+      <UserProvider>
+        <ThemeProvider theme={colorThemeMaterial}>
+          <Outlet />
+        </ThemeProvider>
+      </UserProvider>
     </ClerkProvider>
   );
 }
