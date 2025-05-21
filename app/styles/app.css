@@ -74,3 +74,9 @@ body {
 
   background-image: var(--color-backgroundGradiant2);
 }
+
+.filterContainer {
+  transition-property: translate;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}

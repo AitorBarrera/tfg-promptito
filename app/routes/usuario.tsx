@@ -1,6 +1,13 @@
 import { LayoutNavbar } from "~/layouts/LayoutNavbar";
 import type { Route } from "./+types/home";
-import { SignedIn, SignedOut, SignIn, SignUp, UserProfile } from "@clerk/clerk-react";
+import {
+  SignedIn,
+  SignedOut,
+  SignIn,
+  SignUp,
+  UserProfile,
+  useSignUp,
+} from "@clerk/clerk-react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,18 +15,19 @@ export function meta({}: Route.MetaArgs) {
     { name: "description", content: "Usuario!" },
   ];
 }
+
 export default function Usuario() {
   return (
-    <main className="min-h-[100dvh] flex flex-col">
+    <main className="flex min-h-[100dvh] flex-col">
       <LayoutNavbar />
-    <div className="flex items-center justify-center flex-grow">
-      <SignedOut>
-        <SignIn/>
-      </SignedOut>
-      <SignedIn>
-        <UserProfile/>
-      </SignedIn>
-    </div>
+      <div className="flex flex-grow items-center justify-center">
+        <SignedOut>
+          <SignIn />
+        </SignedOut>
+        <SignedIn>
+          <UserProfile />
+        </SignedIn>
+      </div>
     </main>
   );
 }

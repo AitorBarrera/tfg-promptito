@@ -1,48 +1,77 @@
-import React from "react";
 import "./FilterFormStyle.css";
-import { useFetch } from "~/hooks";
-import type { LLM } from "~/interfaces";
+import type { FilterFormProps, LLM } from "~/interfaces";
 import { FilterFormLlms } from "./FilterFormLlms";
 import { FilterFormTematicas } from "./FilterFormTematicas";
 import { FormControlLabel, FormGroup, FormLabel, Switch } from "@mui/material";
 
-export const FilterForm = () => {
+export const FilterForm = ({
+  filterState,
+  handleInputChange,
+  handleSelectChange,
+}: FilterFormProps) => {
+  const { tituloPrompt, nombreAutor, contenidoPrompt, esFavorito } =
+    filterState;
+
   return (
     <form action="">
       <div className="flex flex-col gap-2">
         <div className="form-group">
-          <label htmlFor="titlePrompt">Titulo del prompt:</label>
-          <input type="text" name="titulo" id="titulo" />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="nameAuthor">Nombre de autor:</label>
-          <input type="text" name="nombreAutor" id="nombreAutor" />
-        </div>
-
-        <div className="form-group">
           <label htmlFor="orderBy">Ordenado por:</label>
-          <select name="orderBy" id="orderBy">
-            <option value="dateAsc">Fecha ascendente</option>
-            <option value="dateDesc">Fecha descendente</option>
-            <option value="titleAsc">Titulo ascendente</option>
-            <option value="titleDesc">Titulo descendente</option>
+          <select name="orderBy" id="orderBy" onChange={handleSelectChange}>
+            <option value="fechaAsc">Fecha ascendente</option>
+            <option value="fechaDesc">Fecha descendente</option>
+            <option value="tituloAsc">Titulo ascendente</option>
+            <option value="tituloDesc">Titulo descendente</option>
           </select>
         </div>
 
         <div className="form-group">
-          <label htmlFor="contentPrompt">Contenido del prompt:</label>
-          <textarea name="contenido" id="contenido" />
+          <label htmlFor="tituloPrompt">Titulo del prompt:</label>
+          <input
+            type="text"
+            name="tituloPrompt"
+            value={tituloPrompt ?? ""}
+            id="titulo"
+            onChange={handleInputChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="nombreAutor">Nombre de autor:</label>
+          <input
+            type="text"
+            name="nombreAutor"
+            value={nombreAutor ?? ""}
+            id="nombreAutor"
+            onChange={handleInputChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="contenidoPrompt">Contenido del prompt:</label>
+          <textarea
+            name="contenidoPrompt"
+            id="contenidoPrompt"
+            value={contenidoPrompt ?? ""}
+            onChange={handleInputChange}
+          />
         </div>
 
         <FormControlLabel
-          control={<Switch sx={{ color: "white", backgroundImage: "white" }} />}
+          control={
+            <Switch
+              sx={{ color: "white", backgroundImage: "white" }}
+              onChange={handleInputChange}
+              name="esFavorito"
+              checked={esFavorito ?? false}
+            />
+          }
           label="Favoritos"
         />
 
-        <FilterFormLlms />
+        <FilterFormLlms handleInputChange={handleInputChange} />
 
-        <FilterFormTematicas />
+        <FilterFormTematicas handleInputChange={handleInputChange} />
       </div>
     </form>
   );

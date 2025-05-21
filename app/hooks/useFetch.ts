@@ -18,8 +18,7 @@ export const useFetch = (url: string) => {
   };
 
   const getFetch = async () => {
-
-    setLoadingState();
+    // setLoadingState();
 
     const resp = await fetch(url);
 
@@ -43,7 +42,6 @@ export const useFetch = (url: string) => {
       hasError: false,
       error: null,
     });
-
   };
 
   useEffect(() => {
@@ -51,7 +49,7 @@ export const useFetch = (url: string) => {
   }, [url]);
 
   return {
-    data: state.data ,
+    data: state.data,
     isLoading: state.isLoading,
     hasError: state.hasError,
   };

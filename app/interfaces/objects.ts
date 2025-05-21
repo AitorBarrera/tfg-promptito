@@ -1,7 +1,8 @@
-interface Filters {
+export interface Filters {
   tituloPrompt: string | null;
   nombreAutor: string | null;
   contenidoPrompt: string | null;
+  orderBy: string | null;
   idLlm: number | null;
   idPromptTematica: number | null;
   idUsuarioFavorito: number | null;
