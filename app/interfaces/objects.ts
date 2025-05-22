@@ -1,3 +1,5 @@
+export type TipoParametro = "string" | "listaOpciones" | "number";
+
 export interface Filters {
   tituloPrompt: string | null;
   nombreAutor: string | null;
@@ -25,7 +27,21 @@ export interface PromptVariante {
   id: number;
   nombre: string;
   textoPrompt: string;
-  promptId: number;
+  promptId: number | null;
+  parametros?: Parametro[] | null;
+}
+
+export interface Parametro {
+  id: number;
+  nombre: string;
+  tipoValor: TipoParametro;
+  valorPredeterminado: string | null;
+  opcionParametros: OpcionParametro[] | null;
+}
+
+export interface OpcionParametro {
+  id: number;
+  valor: string;
 }
 
 export interface Usuario {
@@ -34,6 +50,7 @@ export interface Usuario {
   email: string;
   passwordHash: string;
   avatarUrl: string | null;
+  idClerk: string | null;
   estaActivo: boolean;
 }
 

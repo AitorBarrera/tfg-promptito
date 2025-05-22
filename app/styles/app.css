@@ -42,8 +42,6 @@
     rgba(237, 221, 83, 1) 100%
   );
 
-  --color-primarydark: #b7e2dd;
-
   --font-weight-light: "light";
   --font-weight-regular: "regular";
   --font-weight-medium: "medium";
@@ -81,4 +79,25 @@ body {
   transition-property: translate;
   transition-duration: 0.2s;
   transition-timing-function: ease-out;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-primary text-regular font-black;
+}
+
+h1 {
+  @apply text-h3;
+}
+
+h2 {
+  @apply text-h2;
+}
+
+h3 {
+  @apply text-h3 font-black uppercase;
 }

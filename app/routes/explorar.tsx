@@ -95,7 +95,11 @@ export default function Explorar() {
           {hasError && <p>Error al cargar los prompts</p>}
           {data &&
             datos.map((prompt: Prompt) => (
-              <PromptComponente key={prompt.id} prompt={prompt} />
+              <PromptComponente
+                key={prompt.id}
+                prompt={prompt}
+                idClerkUsuarioActual={usuarioEnBBDD?.idClerk ?? ""}
+              />
             ))}
         </div>
         <div className="sticky right-0 bottom-0">

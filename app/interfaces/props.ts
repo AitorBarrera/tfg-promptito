@@ -1,5 +1,5 @@
-import type { ChangeEventHandler } from "react";
-import type { Filters, Prompt } from "./objects";
+import type { ChangeEventHandler, Dispatch, SetStateAction } from "react";
+import type { Filters, Prompt, PromptVariante } from "./objects";
 import type { buttonVariants, iconVariants } from "./variantsStyles";
 import type { StatsBase } from "fs";
 
@@ -17,6 +17,26 @@ export interface IconProps {
 
 export interface PromptComponenteProps {
   prompt: Prompt;
+  idClerkUsuarioActual: string | null;
+}
+
+export interface PromptUseMenuProps {
+  promptVariant: PromptVariante;
+}
+
+export interface PromptFavouriteButtonProps {
+  handleClick?: () => void;
+  idCurrentUser: number | null | undefined;
+  idPrompt: number;
+  initialNumberFavourites: number;
+  inFavourites: boolean;
+  setFavourites: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface PromptSelectVariantProps {
+  currentVariant: PromptVariante;
+  promptVariantes: PromptVariante[];
+  handleChangeVariant: Dispatch<SetStateAction<PromptVariante>>;
 }
 
 export interface FilterFormProps {
@@ -25,7 +45,6 @@ export interface FilterFormProps {
     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
   >;
   handleSelectChange: ChangeEventHandler<HTMLSelectElement>;
-  // handleInputChange: ChangeEventHandler<HTMLInputElement>;
 }
 
 export interface FilterFormLlmsProps {

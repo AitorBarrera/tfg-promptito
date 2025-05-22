@@ -21,8 +21,6 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Usuario() {
-  const usuarioEnBBDD = useContext(UserContext);
-  console.log("Usuario:", usuarioEnBBDD);
   return (
     <main className="flex min-h-[100dvh] flex-col">
       <LayoutNavbar />

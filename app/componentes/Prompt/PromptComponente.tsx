@@ -1,29 +1,59 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { GenericButton } from "../General/GenericButton";
 import { Icon } from "../General/Icon";
 import type { PromptComponenteProps } from "~/interfaces";
 import { addFavourite } from "~/services/Promptito_API";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { UserContext } from "~/contexts/UserContext";
+import { PromptUseMenu } from "./PromptUseMenu";
+import { IconButton } from "@mui/material";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import { PromptFavouriteButton } from "./PromptFavouriteButton";
+import { PromptSelectVariant } from "./PromptSelectVariant";
+import CreateIcon from "@mui/icons-material/Create";
+import { NavLink } from "react-router";
 
-export const PromptComponente = ({ prompt }: PromptComponenteProps) => {
+export const PromptComponente = ({
+  prompt,
+  idClerkUsuarioActual,
+}: PromptComponenteProps) => {
   const usuarioEnBBDD = useContext(UserContext);
+  const [showUseMenu, setShowUseMenu] = useState(false);
 
+  const [inFavourites, setInFavourites] = useState(
+    prompt.enFavoritosDe.find((usuario) => {
+      return usuario.id == usuarioEnBBDD?.id;
+    }) != null,
+  );
+
+  const [currentVariant, setCurrentVariant] = useState(
+    prompt.promptVariantes[0],
+  );
   return (
     <>
       <div className="promptComponente bg-background border-primarydark text-text my-6 grid grid-cols-8 items-center gap-2 rounded-2xl border-2 p-[2rem]">
-        <h3 className="text-primary col-span-5 text-4xl font-black uppercase">
+        <h3 className="col-span-5 overflow-hidden text-ellipsis">
           {prompt.titulo}
+          {prompt.usuarioCreador.idClerk == idClerkUsuarioActual && (
+            <NavLink to={"/crear/" + prompt.id}>
+              <IconButton color="primary">
+                <CreateIcon />
+              </IconButton>
+            </NavLink>
+          )}
         </h3>
 
         <div className="creadoContainer col-span-3 flex justify-end gap-6">
-          <div className="text-end">
-            <b className="text-primary">
-              <Icon iconName="star" margin_right={5} />
-            </b>
-            <span>{prompt.enFavoritosDe.length}</span>
+          <div className="flex items-center text-end">
+            <PromptFavouriteButton
+              idCurrentUser={usuarioEnBBDD?.id}
+              idPrompt={prompt.id}
+              initialNumberFavourites={prompt.enFavoritosDe.length}
+              inFavourites={inFavourites}
+              setFavourites={setInFavourites}
+            />
           </div>
-          <p>
+          <p className="flex items-center">
             <b className="text-primary">Creado en: </b>
             <span>{prompt.fechaCreacion}</span>
           </p>
@@ -45,38 +75,34 @@ export const PromptComponente = ({ prompt }: PromptComponenteProps) => {
           </p>
         </div>
 
-        <div className="promptTexto text-light relative col-span-8 mx-auto my-4 overflow-hidden text-justify">
-          {/* <div className="promptTextoSombra bg-linear-to-b from-transparent from-80% to-black z-10 absolute h-[100%] w-[100%] "> </div> */}
-          <p className="relative">{prompt.promptVariantes[0].textoPrompt}</p>
-        </div>
-
-        <div className="favoriteButtonContainer col-span-3">
-          <SignedIn>
-            <GenericButton
-              key={1}
-              text={"Añadir a favoritos"}
-              buttonVariant={1}
-              iconName="half_star"
-              onClickHandler={() => {
-                addFavourite(usuarioEnBBDD?.id ?? 0, prompt.id);
-              }}
+        {/* <div className="promptTextoSombra bg-linear-to-b from-transparent from-80% to-black z-10 absolute h-[100%] w-[100%] "> </div> */}
+        <p className="promptTexto text-light relative col-span-8 mx-auto my-4 h-[100px] overflow-hidden px-8 text-justify text-ellipsis">
+          {currentVariant.textoPrompt}
+        </p>
+        <div className="col-span-8 flex justify-between">
+          <div className="flex w-[20%] items-center rounded-2xl p-2">
+            <PromptSelectVariant
+              currentVariant={currentVariant}
+              promptVariantes={prompt.promptVariantes}
+              handleChangeVariant={setCurrentVariant}
             />
-          </SignedIn>
-        </div>
+          </div>
 
-        <div className="copyButtonContainer col-span-3 col-start-6 text-end">
-          <GenericButton
-            key={2}
-            text={"Copiar prompt"}
-            buttonVariant={1}
-            iconName="copy"
-            onClickHandler={() => {
-              navigator.clipboard.writeText(
-                prompt.promptVariantes[0].textoPrompt,
-              );
-            }}
-          />
+          <div className="copyButtonContainer flex">
+            <GenericButton
+              key={2}
+              text={"Usar prompt"}
+              buttonVariant={1}
+              iconName="copy"
+              onClickHandler={() => setShowUseMenu(!showUseMenu)}
+            />
+          </div>
         </div>
+        {showUseMenu && (
+          <div className="col-span-8">
+            <PromptUseMenu promptVariant={currentVariant} />
+          </div>
+        )}
       </div>
     </>
   );

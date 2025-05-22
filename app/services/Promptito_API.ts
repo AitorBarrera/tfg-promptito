@@ -11,12 +11,21 @@ export const getAllPrompts = async () => {
 };
 
 export const addFavourite = async (userId: number, promptId: number) => {
-  console.log("userId", userId);
-  console.log("promptId", promptId);
   const response = await fetch(
     `${API_URL}Usuario/addFavorite?usuarioId=${userId}&promptId=${promptId}`,
     {
       method: "POST",
+      body: JSON.stringify({ userId, promptId }),
+    },
+  );
+  return response.json();
+};
+
+export const removeFavourite = async (userId: number, promptId: number) => {
+  const response = await fetch(
+    `${API_URL}Usuario/removeFavorite?usuarioId=${userId}&promptId=${promptId}`,
+    {
+      method: "DELETE",
       body: JSON.stringify({ userId, promptId }),
     },
   );
@@ -39,7 +48,6 @@ export const addUser = async (nuevoUsuario: UsuarioPost) => {
   return response.json();
 };
 
-//TODO
 export const getUserByIdClerk = async (idClerk: string) => {
   const response = await fetch(
     `${API_URL}Usuario/dto/getByIdClerk?idClerk=${idClerk}`,
@@ -48,5 +56,11 @@ export const getUserByIdClerk = async (idClerk: string) => {
 
   if (data.title == "An error occurred") return null;
 
+  return data;
+};
+
+export const getPromptVariantById = async (promptVariantId: number) => {
+  const response = await fetch(`${API_URL}PromptVariante/${promptVariantId}`);
+  const data = await response.json();
   return data;
 };
