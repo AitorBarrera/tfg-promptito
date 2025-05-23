@@ -53,8 +53,8 @@ export const LayoutNavbar = () => {
           to="/usuario"
           className={({ isActive }) =>
             isActive
-              ? "text-primary border-primary place-self-end border-b-2 pb-2"
-              : "place-self-end"
+              ? "text-primary border-primary flex h-full items-center place-self-end border-b-2 pb-2"
+              : "flex items-center place-self-end py-4"
           }
         >
           <SignedOut>

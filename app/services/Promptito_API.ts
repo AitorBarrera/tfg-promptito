@@ -10,6 +10,18 @@ export const getAllPrompts = async () => {
   return data;
 };
 
+export const getAllLLMs = async () => {
+  const response = await fetch(`${API_URL}Llm/dto`);
+  const data = await response.json();
+  return data;
+};
+
+export const getAllTematicas = async () => {
+  const response = await fetch(`${API_URL}Tematica/dto`);
+  const data = await response.json();
+  return data;
+};
+
 export const addFavourite = async (userId: number, promptId: number) => {
   const response = await fetch(
     `${API_URL}Usuario/addFavorite?usuarioId=${userId}&promptId=${promptId}`,

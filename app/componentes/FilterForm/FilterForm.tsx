@@ -3,6 +3,7 @@ import type { FilterFormProps, LLM } from "~/interfaces";
 import { FilterFormLlms } from "./FilterFormLlms";
 import { FilterFormTematicas } from "./FilterFormTematicas";
 import { FormControlLabel, FormGroup, FormLabel, Switch } from "@mui/material";
+import { SignedIn } from "@clerk/clerk-react";
 
 export const FilterForm = ({
   filterState,
@@ -18,10 +19,10 @@ export const FilterForm = ({
         <div className="form-group">
           <label htmlFor="orderBy">Ordenado por:</label>
           <select name="orderBy" id="orderBy" onChange={handleSelectChange}>
-            <option value="fechaAsc">Fecha ascendente</option>
             <option value="fechaDesc">Fecha descendente</option>
-            <option value="tituloAsc">Titulo ascendente</option>
+            <option value="fechaAsc">Fecha ascendente</option>
             <option value="tituloDesc">Titulo descendente</option>
+            <option value="tituloAsc">Titulo ascendente</option>
           </select>
         </div>
 
@@ -57,18 +58,19 @@ export const FilterForm = ({
           />
         </div>
 
-        <FormControlLabel
-          control={
-            <Switch
-              sx={{ color: "white", backgroundImage: "white" }}
-              onChange={handleInputChange}
-              name="esFavorito"
-              checked={esFavorito ?? false}
-            />
-          }
-          label="Favoritos"
-        />
-
+        <SignedIn>
+          <FormControlLabel
+            control={
+              <Switch
+                sx={{ color: "white", backgroundImage: "white" }}
+                onChange={handleInputChange}
+                name="esFavorito"
+                checked={esFavorito ?? false}
+              />
+            }
+            label="Favoritos"
+          />
+        </SignedIn>
         <FilterFormLlms handleInputChange={handleInputChange} />
 
         <FilterFormTematicas handleInputChange={handleInputChange} />

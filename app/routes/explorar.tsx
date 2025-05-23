@@ -2,12 +2,13 @@ import { useFetcher } from "react-router";
 import type { Route } from "./+types/home";
 import { PromptComponente } from "~/componentes/Prompt/PromptComponente";
 import { LayoutNavbar } from "~/layouts/LayoutNavbar";
-import { useFetch, useFilters } from "~/hooks";
+import { useFetch, useForm } from "~/hooks";
 import type { Prompt, Filters } from "~/interfaces";
 import { FilterForm } from "~/componentes/FilterForm/FilterForm";
 import { useContext, useState } from "react";
 import TuneIcon from "@mui/icons-material/Tune";
 import { UserContext } from "~/contexts/UserContext";
+import { Button } from "@mui/material";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -29,6 +30,7 @@ const initialFilters: Filters = {
 
 export default function Explorar() {
   const usuarioEnBBDD = useContext(UserContext);
+  const [actualPage, setActualPage] = useState(1);
 
   const {
     filterState,
@@ -43,7 +45,7 @@ export default function Explorar() {
     idPromptTematica,
     idUsuarioFavorito,
     esFavorito,
-  } = useFilters(initialFilters);
+  } = useForm(initialFilters);
 
   const { data, isLoading, hasError } = useFetch(
     `https://localhost:7035/Prompt/paginacionFiltrado` +
@@ -54,7 +56,9 @@ export default function Explorar() {
       `&idLlm=${idLlm ?? ""}` +
       `&idPromptTematica=${idPromptTematica ?? ""}` +
       `&idUsarioFavorito=${usuarioEnBBDD?.id ?? ""}` +
-      `&esFavorito=${esFavorito}`,
+      `&esFavorito=${esFavorito}` +
+      `&pagina=${actualPage}` +
+      `&cantidadPorPagina=${3}`,
   );
 
   const { datos, cantidadTotal, pagina, cantidadPorPagina, cantidadDePaginas } =
@@ -78,7 +82,9 @@ export default function Explorar() {
       </div>
       <div
         className={
-          `relative flex flex-col` + showFilters ? "w-[100%]" : "w-[75%]"
+          `relative flex flex-col pb-20` + showFilters
+            ? "w-[100%] pb-20"
+            : "w-[75%]"
         }
       >
         <LayoutNavbar />
@@ -102,12 +108,22 @@ export default function Explorar() {
               />
             ))}
         </div>
-        <div className="sticky right-0 bottom-0">
-          {/* <iframe
-            src="https://studio.pickaxe.co/_embed/YL4TIUHG61?d=deployment-0a295aa2-187c-4ebe-bc13-96ed0c343eb8"
-            // style={`width: 100%; height: 500px; max-width: 700px; border-radius: 4px;`}
-            className="h-[500px] w-100"
-          ></iframe> */}
+        <div className="absolute right-0 bottom-0 flex w-[500px] items-center justify-end gap-4 p-4">
+          {Array.from({ length: cantidadDePaginas }, (_, i) => (
+            <button
+              key={i}
+              className={`${
+                actualPage === i + 1
+                  ? "bg-primary text-primaryblack"
+                  : "bg-primaryblack text-primarywhite"
+              } h-10 w-10 cursor-pointer rounded-md`}
+              onClick={() => {
+                setActualPage(i + 1);
+              }}
+            >
+              {i + 1}
+            </button>
+          ))}
         </div>
       </div>
     </main>

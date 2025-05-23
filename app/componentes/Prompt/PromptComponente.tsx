@@ -18,6 +18,7 @@ export const PromptComponente = ({
   idClerkUsuarioActual,
 }: PromptComponenteProps) => {
   const usuarioEnBBDD = useContext(UserContext);
+
   const [showUseMenu, setShowUseMenu] = useState(false);
 
   const [inFavourites, setInFavourites] = useState(
@@ -35,7 +36,7 @@ export const PromptComponente = ({
         <h3 className="col-span-5 overflow-hidden text-ellipsis">
           {prompt.titulo}
           {prompt.usuarioCreador.idClerk == idClerkUsuarioActual && (
-            <NavLink to={"/crear/" + prompt.id}>
+            <NavLink to={"/crear/" + prompt.id} className={"ml-4"}>
               <IconButton color="primary">
                 <CreateIcon />
               </IconButton>
@@ -67,7 +68,6 @@ export const PromptComponente = ({
             </span>
           </p>
         </div>
-
         <div className="autorContainer col-span-3 text-end">
           <p className="">
             <b className="text-primary">Autor: </b>
@@ -75,8 +75,13 @@ export const PromptComponente = ({
           </p>
         </div>
 
+        <div className="descripcionContainer col-span-5">
+          <p className="text-light text-grey max-h-[67px] overflow-y-hidden text-ellipsis">
+            {prompt.descripcion}
+          </p>
+        </div>
         {/* <div className="promptTextoSombra bg-linear-to-b from-transparent from-80% to-black z-10 absolute h-[100%] w-[100%] "> </div> */}
-        <p className="promptTexto text-light relative col-span-8 mx-auto my-4 h-[100px] overflow-hidden px-8 text-justify text-ellipsis">
+        <p className="promptTexto text-light relative col-span-8 mx-auto my-4 max-h-[100px] overflow-hidden px-8 text-justify text-ellipsis">
           {currentVariant.textoPrompt}
         </p>
         <div className="col-span-8 flex justify-between">
@@ -87,6 +92,8 @@ export const PromptComponente = ({
               handleChangeVariant={setCurrentVariant}
             />
           </div>
+
+          {}
 
           <div className="copyButtonContainer flex">
             <GenericButton

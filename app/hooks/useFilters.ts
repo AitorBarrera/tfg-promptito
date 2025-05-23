@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Filters } from "~/interfaces";
 
-export const useFilters = (initialForm: Filters) => {
+export const useForm = (initialForm: Filters | {}) => {
   const [filterState, setFilterState] = useState(initialForm);
 
   const onInputChange = (
@@ -37,7 +37,7 @@ export const useFilters = (initialForm: Filters) => {
     });
   };
 
-  const onResetFilter = (event: Event) => {
+  const onResetFilter = () => {
     setFilterState(initialForm);
   };
 
