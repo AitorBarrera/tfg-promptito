@@ -12,14 +12,22 @@ export const PromptFavouriteButton = ({
   inFavourites,
   setFavourites,
 }: PromptFavouriteButtonProps) => {
-  const handleClickButton = () => {
-    if (inFavourites) {
-      removeFavourite(idCurrentUser ?? 0, idPrompt);
-    } else {
-      addFavourite(idCurrentUser ?? 0, idPrompt);
-    }
+  const [currentNumberFavourites, setCurrentNumberFavourites] = useState(
+    initialNumberFavourites,
+  );
 
-    setFavourites((prev) => !prev);
+  const handleClickButton = () => {
+    if (idCurrentUser !== undefined) {
+      if (inFavourites) {
+        removeFavourite(idCurrentUser ?? 0, idPrompt);
+        setCurrentNumberFavourites(currentNumberFavourites - 1);
+      } else {
+        addFavourite(idCurrentUser ?? 0, idPrompt);
+        setCurrentNumberFavourites(currentNumberFavourites + 1);
+      }
+
+      setFavourites((prev) => !prev);
+    }
   };
 
   return (
@@ -27,7 +35,7 @@ export const PromptFavouriteButton = ({
       <IconButton aria-label="star" color="primary" onClick={handleClickButton}>
         {inFavourites ? <StarIcon /> : <StarBorderIcon />}
       </IconButton>
-      <span>{initialNumberFavourites + (inFavourites ? 1 : 0)}</span>
+      <span>{currentNumberFavourites}</span>
     </div>
   );
 };

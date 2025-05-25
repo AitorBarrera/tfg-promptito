@@ -1,6 +1,7 @@
 import { Checkbox, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { useFetch } from "~/hooks";
 import type { FilterFormTematicasProps, Tematica } from "~/interfaces";
+import { LoadingIndicator } from "../General/LoadingIndicator";
 
 export const FilterFormTematicas = ({
   handleInputChange,
@@ -12,7 +13,7 @@ export const FilterFormTematicas = ({
     <div className="form-group">
       <label>Tematica</label>
       {isLoading ? (
-        <p>Cargando...</p>
+        <LoadingIndicator />
       ) : (
         <RadioGroup name="tematicas" className="tematicasFilter">
           <FormControlLabel

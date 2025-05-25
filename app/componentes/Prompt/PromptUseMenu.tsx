@@ -88,7 +88,6 @@ export const PromptUseMenu = ({ promptVariant }: PromptUseMenuProps) => {
             const parameterNameWithoutSpaces = ReplaceWithespace(
               parametro.nombre,
             );
-
             return (
               <div key={parametro.id} className="flex flex-col gap-2">
                 <label

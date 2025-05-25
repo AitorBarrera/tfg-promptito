@@ -9,6 +9,8 @@ import { useContext, useState } from "react";
 import TuneIcon from "@mui/icons-material/Tune";
 import { UserContext } from "~/contexts/UserContext";
 import { Button } from "@mui/material";
+import { OrbitProgress } from "react-loading-indicators";
+import { LoadingIndicator } from "~/componentes/General/LoadingIndicator";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -69,7 +71,7 @@ export default function Explorar() {
   return (
     <main className="relative flex min-h-[100dvh]">
       <div
-        className={`filterContainer text-text bg-primaryblack sticky top-0 bottom-0 max-h-[100dvh] w-[25%] overflow-scroll overflow-x-hidden px-12 ${showFilters ? "block" : "w-[0%] translate-x-[-500px]"}`}
+        className={`filterContainer text-text bg-primaryblack sticky top-0 bottom-0 max-h-[100dvh] w-[25%] overflow-scroll overflow-x-hidden px-12 ${showFilters ? "block" : "hidden w-[0%] translate-x-[-500px]"}`}
       >
         <h3 className="text-primarywhite font-Tron my-4 text-center text-2xl font-bold">
           PROMPTITO
@@ -90,14 +92,14 @@ export default function Explorar() {
         <LayoutNavbar />
 
         <button
-          className="bg-primary sticky top-0 left-0 z-50 h-10 w-10 cursor-pointer rounded-br-md"
+          className="bg-primaryblack sticky top-0 left-0 z-50 h-10 w-10 cursor-pointer rounded-br-md"
           onClick={() => setShowFilters(!showFilters)}
         >
           <TuneIcon />
         </button>
 
         <div className="max-w-standard relative mx-auto flex flex-col gap-4">
-          {isLoading && <p>Cargando...</p>}
+          {isLoading && <LoadingIndicator />}
           {hasError && <p>Error al cargar los prompts</p>}
           {data &&
             datos.map((prompt: Prompt) => (

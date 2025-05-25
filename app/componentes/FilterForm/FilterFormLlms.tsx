@@ -1,6 +1,7 @@
 import { Checkbox, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { useFetch } from "~/hooks";
 import type { FilterFormLlmsProps, LLM } from "~/interfaces";
+import { LoadingIndicator } from "../General/LoadingIndicator";
 
 export const FilterFormLlms = ({ handleInputChange }: FilterFormLlmsProps) => {
   const { data, isLoading } = useFetch("https://localhost:7035/Llm/dto");
@@ -10,7 +11,7 @@ export const FilterFormLlms = ({ handleInputChange }: FilterFormLlmsProps) => {
     <div className="form-group flex flex-col gap-2">
       <label>LLM</label>
       {isLoading ? (
-        <p>Cargando...</p>
+        <LoadingIndicator />
       ) : (
         <RadioGroup name="llms" className="llmsFilter">
           <FormControlLabel
@@ -37,7 +38,7 @@ export const FilterFormLlms = ({ handleInputChange }: FilterFormLlmsProps) => {
                     onChange={handleInputChange}
                   />
                 }
-                label={`${llm.nombre} ${llm.version}`}
+                label={`${llm.nombre}`}
               />
             );
           })}

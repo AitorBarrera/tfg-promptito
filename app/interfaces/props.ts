@@ -1,5 +1,5 @@
 import type { ChangeEventHandler, Dispatch, SetStateAction } from "react";
-import type { Filters, Prompt, PromptVariante } from "./objects";
+import type { Filters, Parametro, Prompt, PromptVariante } from "./objects";
 import type { buttonVariants, iconVariants } from "./variantsStyles";
 import type { StatsBase } from "fs";
 
@@ -17,7 +17,7 @@ export interface IconProps {
 
 export interface PromptComponenteProps {
   prompt: Prompt;
-  idClerkUsuarioActual: string | null;
+  idClerkUsuarioActual?: string | null;
 }
 
 export interface PromptUseMenuProps {
@@ -57,4 +57,8 @@ export interface FilterFormTematicasProps {
   handleInputChange: ChangeEventHandler<
     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
   >;
+}
+
+export interface CreateParameterPromptProps {
+  parameterName: string;
 }

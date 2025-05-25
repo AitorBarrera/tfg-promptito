@@ -1,4 +1,4 @@
-import type { UsuarioPost } from "~/interfaces";
+import type { PromptConNavegacion, UsuarioPost } from "~/interfaces";
 
 const API_URL = "https://localhost:7035/";
 
@@ -30,7 +30,6 @@ export const addFavourite = async (userId: number, promptId: number) => {
       body: JSON.stringify({ userId, promptId }),
     },
   );
-  return response.json();
 };
 
 export const removeFavourite = async (userId: number, promptId: number) => {
@@ -41,7 +40,6 @@ export const removeFavourite = async (userId: number, promptId: number) => {
       body: JSON.stringify({ userId, promptId }),
     },
   );
-  return response.json();
 };
 
 export const getUserById = async (userId: number) => {
@@ -75,4 +73,17 @@ export const getPromptVariantById = async (promptVariantId: number) => {
   const response = await fetch(`${API_URL}PromptVariante/${promptVariantId}`);
   const data = await response.json();
   return data;
+};
+
+export const addPromptConNavegacion = async (
+  nuevoPromptConNavegacion: PromptConNavegacion,
+) => {
+  console.log(nuevoPromptConNavegacion);
+  const response = await fetch(`${API_URL}Prompt/navegacion/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(nuevoPromptConNavegacion),
+  });
+
+  return response.json();
 };

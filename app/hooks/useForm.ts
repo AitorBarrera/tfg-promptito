@@ -1,7 +1,9 @@
 import { useState } from "react";
-import type { Filters } from "~/interfaces";
+import type { CreatePrompt, Filters, Parametro } from "~/interfaces";
 
-export const useForm = (initialForm: Filters | {}) => {
+export const useForm = <T extends Filters | CreatePrompt | Parametro>(
+  initialForm: T,
+) => {
   const [filterState, setFilterState] = useState(initialForm);
 
   const onInputChange = (
@@ -37,6 +39,30 @@ export const useForm = (initialForm: Filters | {}) => {
     });
   };
 
+  const onCheckboxChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    name: string,
+  ) => {
+    const checkboxes = document.querySelectorAll(`.${name}Container input`);
+    let finalValues: number[] = [];
+    Array.from(checkboxes).forEach((checkbox) => {
+      if ((checkbox as HTMLInputElement).checked)
+        finalValues.push(Number((checkbox as HTMLInputElement).value));
+    });
+
+    setFilterState({
+      ...filterState,
+      [name]: finalValues,
+    });
+  };
+
+  const changeParameters = (parameterList: Parametro[]) => {
+    setFilterState({
+      ...filterState,
+      parametros: parameterList,
+    });
+  };
+
   const onResetFilter = () => {
     setFilterState(initialForm);
   };
@@ -44,8 +70,11 @@ export const useForm = (initialForm: Filters | {}) => {
   return {
     ...filterState,
     filterState: filterState,
+    setFilterState,
     onInputChange,
     onSelectChange,
+    onCheckboxChange,
     onResetFilter,
+    changeParameters,
   };
 };

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GenericButton } from "../General/GenericButton";
 import { Icon } from "../General/Icon";
 import type { PromptComponenteProps } from "~/interfaces";
@@ -21,11 +21,15 @@ export const PromptComponente = ({
 
   const [showUseMenu, setShowUseMenu] = useState(false);
 
-  const [inFavourites, setInFavourites] = useState(
-    prompt.enFavoritosDe.find((usuario) => {
-      return usuario.id == usuarioEnBBDD?.id;
-    }) != null,
-  );
+  const [inFavourites, setInFavourites] = useState(false);
+
+  useEffect(() => {
+    setInFavourites(
+      prompt.enFavoritosDe.find((usuario) => {
+        return usuario.id == usuarioEnBBDD?.id;
+      }) != null,
+    );
+  }, [usuarioEnBBDD]);
 
   const [currentVariant, setCurrentVariant] = useState(
     prompt.promptVariantes[0],
@@ -45,16 +49,7 @@ export const PromptComponente = ({
         </h3>
 
         <div className="creadoContainer col-span-3 flex justify-end gap-6">
-          <div className="flex items-center text-end">
-            <PromptFavouriteButton
-              idCurrentUser={usuarioEnBBDD?.id}
-              idPrompt={prompt.id}
-              initialNumberFavourites={prompt.enFavoritosDe.length}
-              inFavourites={inFavourites}
-              setFavourites={setInFavourites}
-            />
-          </div>
-          <p className="flex items-center">
+          <p className="flex items-center gap-2">
             <b className="text-primary">Creado en: </b>
             <span>{prompt.fechaCreacion}</span>
           </p>
@@ -80,6 +75,15 @@ export const PromptComponente = ({
             {prompt.descripcion}
           </p>
         </div>
+        <div className="col-span-3 flex items-center justify-end text-end">
+          <PromptFavouriteButton
+            idCurrentUser={usuarioEnBBDD?.id}
+            idPrompt={prompt.id}
+            initialNumberFavourites={prompt.enFavoritosDe.length}
+            inFavourites={inFavourites}
+            setFavourites={setInFavourites}
+          />
+        </div>
         {/* <div className="promptTextoSombra bg-linear-to-b from-transparent from-80% to-black z-10 absolute h-[100%] w-[100%] "> </div> */}
         <p className="promptTexto text-light relative col-span-8 mx-auto my-4 max-h-[100px] overflow-hidden px-8 text-justify text-ellipsis">
           {currentVariant.textoPrompt}
@@ -92,9 +96,6 @@ export const PromptComponente = ({
               handleChangeVariant={setCurrentVariant}
             />
           </div>
-
-          {}
-
           <div className="copyButtonContainer flex">
             <GenericButton
               key={2}
