@@ -84,6 +84,4 @@ export const addPromptConNavegacion = async (
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(nuevoPromptConNavegacion),
   });
-
-  return response.json();
 };

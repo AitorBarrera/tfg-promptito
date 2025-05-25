@@ -162,7 +162,7 @@ export const CreatePromptForm = () => {
         </div>
 
         <div className="llmsContainer col-span-2 col-start-5 flex flex-col gap-2">
-          <FormLabel component="legend" className="text-primarydark">
+          <FormLabel component="legend" className="!text-primary">
             LLMs
           </FormLabel>
           <FormGroup className="!grid grid-cols-2">
@@ -184,7 +184,7 @@ export const CreatePromptForm = () => {
         </div>
 
         <div className="tematicasContainer col-span-2 flex flex-col gap-2">
-          <FormLabel component="legend" className="text-primarydark">
+          <FormLabel component="legend" className="!text-primary">
             Tematicas
           </FormLabel>
           <FormGroup className="!grid grid-cols-2">
@@ -247,18 +247,16 @@ export const CreatePromptForm = () => {
           >
             Crear Parametros
           </Button>
-          {createdParametersNames.length === 0 && (
-            <>
-              <span> o </span>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleCreatePrompt}
-              >
-                Crear Prompt sin parametros
-              </Button>
-            </>
-          )}
+          <>
+            <span> o </span>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleCreatePrompt}
+            >
+              Crear Prompt sin parametros
+            </Button>
+          </>
         </div>
         {createdParametersNames.length > 0 && (
           <form action="" className="col-span-8" onSubmit={handleSetParameters}>
@@ -283,20 +281,21 @@ export const CreatePromptForm = () => {
             </Button>
           </form>
         )}
+        {definedPrompt && (
+          <>
+            <hr className="text-primarydark col-span-8 my-6" />
+            <Button
+              className="col-span-6 col-start-2 h-12"
+              variant="contained"
+              color="secondary"
+              type="button"
+              onClick={handleCreatePrompt}
+            >
+              CREAR PROMPT
+            </Button>
+          </>
+        )}
       </div>
-      {definedPrompt && (
-        <>
-          <hr className="text-primarydark my-6" />
-          <Button
-            className="col-span-6 col-start-2"
-            variant="outlined"
-            type="button"
-            onClick={handleCreatePrompt}
-          >
-            CREAR PROMPT
-          </Button>
-        </>
-      )}
     </div>
   );
 };
