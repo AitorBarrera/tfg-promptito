@@ -50,7 +50,7 @@ export default function Explorar() {
   } = useForm(initialFilters);
 
   const { data, isLoading, hasError } = useFetch(
-    `https://localhost:7035/Prompt/paginacionFiltrado` +
+    `https://promptitoapi-docker.onrender.com/Prompt/paginacionFiltrado` +
       `?tituloPrompt=${tituloPrompt}` +
       `&nombreAutor=${nombreAutor}` +
       `&contenidoPrompt=${contenidoPrompt}` +

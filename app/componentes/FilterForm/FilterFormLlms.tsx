@@ -4,7 +4,9 @@ import type { FilterFormLlmsProps, LLM } from "~/interfaces";
 import { LoadingIndicator } from "../General/LoadingIndicator";
 
 export const FilterFormLlms = ({ handleInputChange }: FilterFormLlmsProps) => {
-  const { data, isLoading } = useFetch("https://localhost:7035/Llm/dto");
+  const { data, isLoading } = useFetch(
+    "https://promptitoapi-docker.onrender.com/Llm/dto",
+  );
 
   const llms = data;
   return (

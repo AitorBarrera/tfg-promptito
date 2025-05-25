@@ -6,7 +6,9 @@ import { LoadingIndicator } from "../General/LoadingIndicator";
 export const FilterFormTematicas = ({
   handleInputChange,
 }: FilterFormTematicasProps) => {
-  const { data, isLoading } = useFetch("https://localhost:7035/tematica/dto");
+  const { data, isLoading } = useFetch(
+    "https://promptitoapi-docker.onrender.com/tematica/dto",
+  );
 
   const tematicas = data;
   return (

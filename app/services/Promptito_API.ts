@@ -1,6 +1,6 @@
 import type { PromptConNavegacion, UsuarioPost } from "~/interfaces";
 
-const API_URL = "https://localhost:7035/";
+const API_URL = "https://promptitoapi-docker.onrender.com/";
 
 export const getAllPrompts = async () => {
   const response = await fetch(
